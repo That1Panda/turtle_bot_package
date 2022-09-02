@@ -29,16 +29,17 @@ def go_to_goal():
     global y
     global yaw
     xg,yg=int(input("Enter Value of x: ")),int(input("Enter Value of y: "))
+    Alpha,Beta=rospy.get_param("/Alpha"),rospy.get_param("/Beta")
     
     velocity_message=Twist()
     cmd_vel_topic="/turtle1/cmd_vel"
     while(True):
-        k_linear=0.5
+        k_linear=Beta
         distance=abs(math.sqrt(((x-xg)**2)+((y-yg)**2)))
 
         linear_speed=k_linear*distance
 
-        k_angular=4
+        k_angular=Alpha
         desired_angle_goal=math.atan2(yg-y,xg-x)
         angular_speed=(desired_angle_goal-yaw)*k_angular
 

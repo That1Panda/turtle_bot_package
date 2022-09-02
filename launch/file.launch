@@ -1,0 +1,8 @@
+<launch>
+
+<rosparam command="load" file="$(find turtle_bot_package)/config/file.yaml"/>
+<node pkg="turtlesim" type="turtlesim_node" name="turtle" output="screen"> </node>
+<node pkg="turtle_bot_package" type="move.py" name="turtlesim_motion_pose" output="screen"> </node>
+
+
+</launch>
